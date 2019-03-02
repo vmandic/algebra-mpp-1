@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
     chunkFilename: "[name].js"
   },
 
@@ -46,6 +47,7 @@ module.exports = {
 
   devServer: {
     contentBase: path.join("/dist/"),
+    historyApiFallback: true,
     inline: true,
     host: "0.0.0.0",
     port: 8080
