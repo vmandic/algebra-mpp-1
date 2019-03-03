@@ -1,10 +1,6 @@
 import React from "react";
-import Router from "./Router";
+import RouterLayout from "./layout/RouterLayout";
 
-const App = () => {
-  return (
-    <Router />
-  );
-};
+const App = () => <RouterLayout />;
 
 export default App;
