@@ -76,4 +76,26 @@ const addItem = item => {
 
 10. `import { combineReducers } from "redux";`
 
-- Spaja reducere u jedan veliki reducer i osigurava da se provjere svi action typeovi koje ulazni reduceri "switchaju". Reduceri uvijek trebaju biti "čisti" (pure) i ne uzrokovati side effect rezultate.
+- Spaja reducere u jedan veliki reducer, korijenski reducer. Rezultat korijenskog reducera mora biti novi tj. idući store state.
+
+Iduća dva primjera pokazuju kako napraviti isti kombinirani reducer na dva načina (oba primjera koriste tri subreducera za svaki dio store statea):
+
+```JavaScript
+const reducer = combineReducers({
+  a: doSomethingWithA,
+  b: processB,
+  c: c
+})
+```
+
+ ili "ručno" mapiranjem subreducera na dio statea (iz čega se vidi što `combineReducers` zapravo olakašava u sintaksi):
+
+ ```JavaScript
+ function reducer(state = {}, action) {
+  return {
+    a: doSomethingWithA(state.a, action),
+    b: processB(state.b, action),
+    c: c(state.c, action)
+  }
+}
+ ```
